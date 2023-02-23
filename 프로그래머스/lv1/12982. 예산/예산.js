@@ -1,8 +1,14 @@
 function solution(d, budget) {
+    let result = 0;
+    
     d.sort((a, b) => a - b);
-    while (d.reduce((a, b) => (a + b), 0) > budget) {
-      d.pop();
-    }
+    
+    for (let i = 0; result <= budget; i++) {
+        if (result + d[i] <= budget) {
+            result += d[i];
+            continue;
+        }
 
-    return d.length;
+        return i;
+    }
 }
